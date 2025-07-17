@@ -1,17 +1,39 @@
-import { NextResponse } from "next/server";
+import connectDB from "@/lib/mongo";
+import { User } from "@/models/user";
+import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+import { generateVerificationToken, generateVerificationExpiry, sendVerificationEmail } from "@/lib/notifications/emailVerification";
 
 /**
  * GET endpoint
  * @description Fetches data from the endpoint
  * @returns Response with the fetched data
  */
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
     try {
         // Your GET logic here
-        const data = { message: "Data fetched successfully" };
+        await connectDB();
+
+        const userId = req.nextUrl.searchParams.get("id");
+
+        if (!userId) {
+            return NextResponse.json(
+                { success: false, error: "User ID is required" },
+                { status: 400 }
+            );
+        }
+
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return NextResponse.json(
+                { success: false, error: "User not found" },
+                { status: 404 }
+            );
+        }
 
         return NextResponse.json(
-            { success: true, data },
+            { success: true, data: user },
             { status: 200 }
         );
     } catch (err) {
@@ -23,22 +45,97 @@ export async function GET(req: Request) {
     }
 }
 
+
+
+// Input validation helper
+function validateInput(data: UserData): string | null {
+    if (!data.name?.trim()) return "Name is required";
+    if (!data.email?.trim()) return "Email is required";
+    if (!data.phoneNumber?.trim()) return "Phone number is required";
+    if (!data.password || data.password.length < 6) return "Password must be at least 6 characters";
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) return "Invalid email format";
+    
+    return null;
+}
+
+interface UserData{
+    name : string;
+    email: string;
+    phoneNumber: string;
+    password : string;
+};
+
+
 /**
  * POST endpoint
  * @description Creates a new resource
  * @param req Request object containing the data to create
  * @returns Response with the created data
  */
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
         // Parse the request body
+        await connectDB();
+
         const body = await req.json();
 
-        // Your POST logic here
-        const createdData = { ...body, id: "new-id" };
+        const userData : UserData = body;
+
+
+
+        const validationError = validateInput(userData);
+        if (validationError) {
+            return NextResponse.json(
+                {success: false, error: validationError}, 
+                {status: 400}
+            );
+        }
+
+        const existingUser = await User.findOne({ email: userData.email });
+        if (existingUser) {
+            return NextResponse.json(
+                {success: false, error: "User with this email already exists"}, 
+                {status: 409} // Conflict status
+            );
+        }
+
+        // Hash password before storing
+        const saltRounds = 12;
+        const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
+
+        // Generate verification token
+        const verificationToken = generateVerificationToken();
+        const verificationExpiry = generateVerificationExpiry();
+
+        const userToCreate = {
+            ...userData,
+            password : hashedPassword,
+            emailVerificationToken: verificationToken,
+            emailVerificationExpires: verificationExpiry
+        }
+
+
+
+        const new_user = await User.create(userToCreate)
+
+       
+        try {
+            await sendVerificationEmail(userData.email, userData.name, verificationToken);
+            console.log("Verification email sent successfully");
+        } catch (emailError) {
+            console.error("Failed to send verification email:", emailError);
+            // Note: We don't fail user creation if email sending fails
+            // The user can still be created and email can be resent later
+        }
+
+        // Don't return the password or sensitive data in the response
+        const userResponse = await new_user.toObject();
 
         return NextResponse.json(
-            { success: true, data: createdData },
+            { success: true, data: userResponse },
             { status: 201 }
         );
     } catch (err) {
@@ -56,16 +153,34 @@ export async function POST(req: Request) {
  * @param req Request object containing the data to update
  * @returns Response with the updated data
  */
-export async function PUT(req: Request) {
+export async function PUT(req: NextRequest) {
     try {
         // Parse the request body
+        await connectDB();
+
+        const userId = req.nextUrl.searchParams.get("id");
+
+        if (!userId) {
+            return NextResponse.json(
+                { success: false, error: "User ID is required" },
+                { status: 400 }
+            );
+        }
+
         const body = await req.json();
 
         // Your PUT logic here
-        const updatedData = { ...body, updatedAt: new Date() };
+        const user = await User.findByIdAndUpdate(userId, { ...body, updatedAt: new Date() });
+
+        if (!user) {
+            return NextResponse.json(
+                { success: false, error: "User not found" },
+                { status: 404 }
+            );
+        }
 
         return NextResponse.json(
-            { success: true, data: updatedData },
+            { success: true, data: user },
             { status: 200 }
         );
     } catch (err) {
@@ -83,16 +198,32 @@ export async function PUT(req: Request) {
  * @param req Request object containing the ID to delete
  * @returns Response confirming the deletion
  */
-export async function DELETE(req: Request) {
+export async function DELETE(req: NextRequest) {
     try {
         // Parse the request body
-        const body = await req.json();
+        await connectDB();
 
-        // Your DELETE logic here
-        const result = { message: "Resource deleted successfully" };
+
+        const userId = req.nextUrl.searchParams.get("id");
+
+        if (!userId) {
+            return NextResponse.json(
+                { success: false, error: "User ID is required" },
+                { status: 400 }
+            );
+        }
+
+        const user = await User.findByIdAndDelete(userId);
+
+        if (!user) {
+            return NextResponse.json(
+                { success: false, error: "User not found" },
+                { status: 404 }
+            );
+        }
 
         return NextResponse.json(
-            { success: true, data: result },
+            { success: true, data: user },
             { status: 200 }
         );
     } catch (err) {

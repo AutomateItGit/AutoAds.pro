@@ -1,5 +1,85 @@
 {
     "home" : {
         "hello" : "Bonjour le monde"
+    },
+    "header" : {
+        "banner" : {
+            "early" : "Accès Anticipé - Offre Limitée"
+        },
+        "nav" : {
+            "features" : "Fonctionnalités",
+            "pricing" : "Tarifs",
+            "testimonials" : "Témoignages"
+        },
+        "btn" : {
+            "trial" : "Essai Gratuit",
+            "login" : "Se Connecter",
+            "logout" : "Se Déconnecter"
+        }
+    },
+    "checkout": {
+    "cancel": {
+      "title": "Annulation de la commande",
+      "description": "Vous avez annulé la commande",
+      "backToHome": "Retour à la page d'accueil"
+    },
+    "success": {
+      "title": "Paiement réussi !",
+      "description": "Merci pour votre abonnement.",
+      "subscriptionTitle": "Votre abonnement",
+      "plan": "Plan :",
+      "status": "Statut :",
+      "active": "Actif",
+      "startUsing": "Commencer à utiliser"
     }
+  },
+  "verification": {
+    "email": {
+      "loading": "Chargement...",
+      "verifying": "Vérification de votre email...",
+      "waitMessage": "Veuillez patienter pendant que nous vérifions votre adresse email.",
+      "successTitle": "Email vérifié avec succès !",
+      "failedTitle": "Échec de la vérification",
+      "redirecting": "Redirection vers la page de connexion dans 3 secondes...",
+      "goToSignIn": "Aller à la connexion",
+      "resendEmail": "Renvoyer l'email de vérification",
+      "resending": "Envoi en cours...",
+      "enterEmail": "Veuillez saisir votre adresse email pour renvoyer la vérification :"
+    }
+  },
+  "signin": {
+    "title": "Page de Connexion",
+    "subtitle": "Connexion par email",
+    "email": "Email",
+    "password": "Mot de passe",
+    "emailPlaceholder": "françoisJ@mail.com",
+    "passwordPlaceholder": "*********",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signInButton": "Se Connecter"
+  },
+  "signup": {
+    "title": "Bienvenue sur AutoPlanner",
+    "subtitle": "Inscrivez-vous et éliminez les rendez-vous manqués dès maintenant !",
+    "name": "Nom",
+    "email": "Email",
+    "phoneNumber": "Numéro de téléphone",
+    "password": "Mot de passe",
+    "namePlaceholder": "François",
+    "emailPlaceholder": "françoisJ@mail.com",
+    "phonePlaceholder": "0123456789",
+    "passwordPlaceholder": "*********",
+    "signUpButton": "S'inscrire ->",
+    "signingUp": "Inscription en cours...",
+    "googleButton": "Google"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer"
+  },
+  "signout": {
+    "signingOut": "Déconnexion en cours..."
+  }
 }

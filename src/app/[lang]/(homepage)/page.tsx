@@ -1,3 +1,4 @@
+import Header from "@/component/ui/Header";
 import { getDictionary } from "@/lib/dictonnaries";
 
 export default async function Home({params} : {params : Promise<{lang : "fr" | "en"}>}) {
@@ -6,7 +7,7 @@ export default async function Home({params} : {params : Promise<{lang : "fr" | "
 
   return (
     <div>
-      <h1>{dictionary.home.hello}</h1>
+      <Header params={params} />
     </div>
   );
 }

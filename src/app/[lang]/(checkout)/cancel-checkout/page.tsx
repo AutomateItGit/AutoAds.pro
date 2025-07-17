@@ -8,9 +8,9 @@ export default async function CancelCheckout({params} : {params : Promise<{lang 
 
   return (
     <div className='flex flex-col items-center justify-center h-screen'>
-        <h1 className='text-2xl font-bold'>Annulation de la commande</h1>
-        <p className='text-sm text-gray-500'>Vous avez annulé la commande</p>
-        <Link href='/' className='mt-4'>Retour à la page d&apos;accueil</Link>
+      <h1 className='text-2xl font-bold'>{dictionary.checkout.cancel.title}</h1>
+      <p className='text-sm text-gray-500'>{dictionary.checkout.cancel.description}</p>
+      <Link href={`/${lang}`} className='mt-4'>{dictionary.checkout.cancel.backToHome}</Link>
     </div>
   )
 }

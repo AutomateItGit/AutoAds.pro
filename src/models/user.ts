@@ -18,8 +18,7 @@ export const UserSchema = new Schema({
     },
     image: {
         type: String,
-        required: [true, "Image is required"],
-        default: "https://ui-avatars.com/api/?name=John+Doe",
+        required: false,
     },
     password: {
         type: String,

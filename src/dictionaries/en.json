@@ -1,5 +1,86 @@
 {
     "home" : {
         "hello" : "Hello World"
-    }
+    },
+    "header" : {
+        "banner" : {
+            "early" : "Early Access - Limited Time Offer"
+        },
+        "nav" : {
+            "features" : "Features",
+            "pricing" : "Pricing",
+            "testimonials" : "Testimonials"
+        },
+        "btn" : {
+            "trial" : "Start Free Trial",
+            "login" : "Sign In",
+            "logout" : "Sign Out"
+        }
+    },
+    "checkout": {
+      "cancel": {
+        "title": "Order Cancellation",
+        "description": "You have cancelled the order",
+        "backToHome": "Back to home page"
+      },
+      "success": {
+        "title": "Payment Successful!",
+        "description": "Thank you for subscribing.",
+        "subscriptionTitle": "Your Subscription",
+        "plan": "Plan:",
+        "status": "Status:",
+        "active": "Active",
+        "startUsing": "Start Using"
+      }
+    },
+    "verification": {
+      "email": {
+        "loading": "Loading...",
+        "verifying": "Verifying your email...",
+        "waitMessage": "Please wait while we verify your email address.",
+        "successTitle": "Email Verified Successfully!",
+        "failedTitle": "Verification Failed",
+        "redirecting": "Redirecting to sign in page in 3 seconds...",
+        "goToSignIn": "Go to Sign In",
+        "resendEmail": "Resend Verification Email",
+        "resending": "Resending...",
+        "enterEmail": "Please enter your email address to resend verification:"
+      }
+    },
+      "signin": {
+    "title": "Sign In Page",
+    "subtitle": "Sign in with email",
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "françoisJ@mail.com",
+    "passwordPlaceholder": "*********",
+    "forgotPassword": "Forgot your password?",
+    "signInButton": "Sign In"
+  },
+  "signup": {
+    "title": "Welcome to AutoPlanner",
+    "subtitle": "Sign up and get rid of no show now !",
+    "name": "Name",
+    "email": "Email",
+    "phoneNumber": "Phone number",
+    "password": "Password",
+    "namePlaceholder": "François",
+    "emailPlaceholder": "françoisJ@mail.com",
+    "phonePlaceholder": "0123456789",
+    "passwordPlaceholder": "*********",
+    "signUpButton": "Sign up ->",
+    "signingUp": "Signing up...",
+    "googleButton": "Google"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "signout": {
+    "signingOut": "Signing out..."
+  }
 }
+
