@@ -9,10 +9,10 @@ import { getDictionary } from "@/lib/dictonnaries";
 
 
 interface SignInFormProps {
-  searchParams?: {
+  searchParams?: Promise<{
       error?: string;
       message?: string;
-  };
+  }>;
   params: Promise<{ lang: "fr" | "en" }>;
 }
 
@@ -23,19 +23,19 @@ export default async function SignInForm({searchParams, params} : SignInFormProp
 
     // Si l'utilisateur est déjà connecté, on le redirige vers la page d'accueil
     if (session) {
-        redirect("/dashboard");
+        redirect("/" + lang + "/dashboard");
     }
 
-
-    const error = searchParams?.error;
-    const message = searchParams?.message;
+    const resolvedSearchParams = await searchParams;
+    const error = resolvedSearchParams?.error;
+    const message = resolvedSearchParams?.message;
 
     // Server Action pour gérer la connexion par identifiants
     async function handleCredentialsLogin(formData: FormData) {
         "use server";
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
-        let url = '/';
+        let url = '/' + lang + '/signin';
         try {
             const result = await signIn("credentials", {
                 email,
@@ -43,10 +43,10 @@ export default async function SignInForm({searchParams, params} : SignInFormProp
                 redirect: false // Prevent automatic redirect
             });
             if (result?.error) {
-                url = `/signin?error=${encodeURIComponent(result.error)}`;
+                url = `/${lang}/signin?error=${encodeURIComponent(result.error)}`;
             }
             else {
-                url = '/dashboard';
+                url = '/' + lang + '/dashboard';
             }
             console.log('signin result:', result);
             
@@ -56,7 +56,7 @@ export default async function SignInForm({searchParams, params} : SignInFormProp
         } catch (error) {
             // Handle error
             const errorMessage = error instanceof Error ? error.message : "Authentication failed";
-            url = `/signin?error=${encodeURIComponent(errorMessage)}`;
+            url = `/${lang}/signin?error=${encodeURIComponent(errorMessage)}`;
         }
         finally {
             //Garder le finally sinon erreurs

@@ -3,6 +3,9 @@ import { User } from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { generateVerificationToken, generateVerificationExpiry, sendVerificationEmail } from "@/lib/notifications/emailVerification";
+import Business from "@/models/business";
+import { stripe } from "@/lib/stripe";
+import { Types } from "mongoose";
 
 /**
  * GET endpoint
@@ -131,8 +134,25 @@ export async function POST(req: NextRequest) {
             // The user can still be created and email can be resent later
         }
 
+        const customerId = await stripe.customers.create({
+            email: userData.email as string,
+            name: userData.name as string,
+        });
+
+        const business = await Business.create({
+            name: userData.name,
+            ownerId: new_user._id,
+            subscription: {
+                status: "unsubscribed",
+                customerId: customerId.id,
+                currentPeriodEnd: new Date(),
+            },
+        });
+
+        const updatedUser = await User.findByIdAndUpdate(new_user._id, { businessId:  new Types.ObjectId(business._id.toString()) }, { new: true }).select("-password");
+
         // Don't return the password or sensitive data in the response
-        const userResponse = await new_user.toObject();
+        const userResponse = await updatedUser.toObject();
 
         return NextResponse.json(
             { success: true, data: userResponse },

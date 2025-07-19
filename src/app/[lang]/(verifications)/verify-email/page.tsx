@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useRouter, useParams } from 'next/navigation';
-import { useTranslations } from "@/component/providers/DictonaryContext"
+import { useTranslations } from "@/components/providers/DictonaryContext"
 
 export default function VerifyEmailPage() {
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');

@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { useTranslations } from '@/component/providers/DictonaryContext';
+import { useTranslations } from '@/components/providers/DictonaryContext';
 
 
 export default function SignOutPage({ params }: { params: Promise<{ lang: "fr" | "en" }> }) {

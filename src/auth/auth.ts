@@ -38,9 +38,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             throw new Error("No User Found");
           }
 
-          if(!user.isActive){
-            throw new Error("User is not active");
-          }
 
           // Check if user has a password (not an OAuth user)
           if (!user.password) {
@@ -124,6 +121,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (dbUser) {
           // Set the token.sub to the database user's ID
           token.sub = dbUser._id.toString();
+          token.dashboardAccess = dbUser.dashboardAccess;
+          token.businessId = dbUser.businessId;
         }
       } catch (error) {
         console.error('Error fetching user data for JWT:', error);

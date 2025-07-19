@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/navigation";
 import { IUser } from "@/types/user"; 
 import { signIn } from "next-auth/react";
-import { useTranslations } from "@/component/providers/DictonaryContext";
+import { useTranslations } from "@/components/providers/DictonaryContext";
 
 interface FormData {
     name : string;
@@ -45,7 +45,7 @@ export default function SignUpForm(){
     setError('');
 
     try{
-        const response = await fetch('/api/owner', {
+        const response = await fetch('/api/user', {
             method : "POST",
             headers: {
                  'Content-Type' : 'application/json',

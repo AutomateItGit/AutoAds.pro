@@ -1,4 +1,4 @@
-import Header from "@/component/ui/Header";
+import Header from "@/components/ui/Header";
 import { getDictionary } from "@/lib/dictonnaries";
 
 export default async function Home({params} : {params : Promise<{lang : "fr" | "en"}>}) {

@@ -4,12 +4,13 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongo";
 import { Types } from "mongoose";
 import { User } from "@/models/user";
+import Business from "@/models/business";
 
 export async function POST(req: Request){
     try {
         await connectDB();
-        
-        const {priceId} = await req.json();
+
+        const {priceId, lang} = await req.json();
 
         if(!priceId){
             console.error("No priceId provided");
@@ -19,13 +20,14 @@ export async function POST(req: Request){
         console.log("The priceId is", priceId);
 
         const userSession = await auth();
+        console.log("User session:", userSession);
 
         if(!userSession?.user?.id){
             console.error("No user id in session:", userSession?.user);
             return NextResponse.json({error: "User ID not found"}, {status: 404});
         }
 
-        const user = await User.findOne({id: new Types.ObjectId(userSession?.user?.id)}).select("subscription.customerId");
+        const user = await Business.findOne({ownerId: new Types.ObjectId(userSession?.user?.id.toString())}).select("subscription.customerId");
 
         if(!user){
             console.error("Business not found for ID:", userSession.user.id);
@@ -52,8 +54,8 @@ export async function POST(req: Request){
                 quantity: 1
             }],
             mode: "subscription",
-            success_url: `${baseUrl}/success-checkout`,
-            cancel_url: `${baseUrl}/cancel-checkout`,
+            success_url: `${baseUrl}/${lang}/success-checkout`,
+            cancel_url: `${baseUrl}/${lang}/cancel-checkout`,
         });
 
         if(!session.url){

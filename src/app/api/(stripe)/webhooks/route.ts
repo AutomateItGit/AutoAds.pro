@@ -106,7 +106,8 @@ export async function POST(req: Request){
                         customerId: userBusiness,
                         status: session.status,
                         plan: planName,
-                    }
+                    },
+                    dashboardAccess: true,
                 });
 
 
@@ -139,7 +140,8 @@ export async function POST(req: Request){
                             customerId: customerIdSucceeded,
                             status: "active",
                             plan: planNameSucceeded,
-                        }
+                        },
+                        dashboardAccess: true,
                     });
                     console.log("[Webhook:invoice.payment_succeeded] Business subscription activated");
                 } catch (error) {
@@ -172,7 +174,8 @@ export async function POST(req: Request){
                             customerId: customerIdFailed,
                             status: "past_due",
                             plan: planNameFailed,
-                        }
+                        },
+                        dashboardAccess: false,
                     });
                     console.log("[Webhook:invoice.payment_failed] Business subscription marked as past due");
                 } catch (error) {
@@ -199,7 +202,8 @@ export async function POST(req: Request){
                             customerId: customerIdDeleted,
                             status: "canceled",
                             plan: null,
-                        }
+                        },
+                        dashboardAccess: false,
                     });
                     console.log("[Webhook:customer.subscription.deleted] Business subscription canceled");
                 } catch (error) {

@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 
 
 // Those are the fields that are required for the user model.
@@ -14,9 +14,6 @@ export interface IUser extends Document {
     updatedAt: Date;
     emailVerificationToken?: string | null;
     emailVerificationExpires?: Date | null;
-    subscription?: {
-        customerId: string | null;
-        status: string | null;
-        plan: string | null;
-    }
+    dashboardAccess: boolean;
+    businessId: Types.ObjectId;
 }

@@ -25,19 +25,10 @@ export const UserSchema = new Schema({
         required: [true, "Password is required"],
         minlength: [8, "Password must be at least 8 characters long"],
     },
-    subscription: {
-        customerId: {
-            type: String,
-            required: [false, "Customer ID is not required"],
-        },
-        status: {
-            type: String,
-            required: [false, "Status is not required"],
-        },
-        plan: {
-            type: String,
-            required: [false, "Plan is not required"],
-        },
+    dashboardAccess: {
+        type: Boolean,
+        required: [false, "Dashboard access is not required"],
+        default: false,
     },
     emailVerificationToken: {
         type: String,
@@ -47,7 +38,12 @@ export const UserSchema = new Schema({
         type: Date,
         required: [false, "Email verification expires is not required"],
     },
-}, { timestamps: true });
+    businessId: {
+        type: Schema.Types.ObjectId,
+        ref: "Business",
+        required: [false, "Business ID is not required"],
+    },
+    }, { timestamps: true });
 
 
 // This is the user model. It is used to create a new user. This prevent us from using sql every time.

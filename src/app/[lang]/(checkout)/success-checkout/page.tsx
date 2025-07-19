@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { getDictionary } from '@/lib/dictonnaries';
+import Link from 'next/link';
 
 export default async function SuccessfulPayment({params} : {params : Promise<{lang : "fr" | "en"}>}) {
   const {lang} = await params;
@@ -39,12 +40,12 @@ export default async function SuccessfulPayment({params} : {params : Promise<{la
           </div>
           
           <div className="pt-8">
-            <button
-              onClick={() => {window.location.href = `/${lang}`}}
-              className="bg-bg-bouton-classic hover:bg-bg-bouton-hover text-white px-8 py-6 text-xl"
+            <Link
+              href={`/${lang}/dashboard`}
+              className="bg-bg-bouton-classic hover:bg-bg-bouton-hover text-white px-8 py-6 text-xl inline-block"
             >
               {dictionary.checkout.success.startUsing}
-            </button>
+            </Link>
           </div>
         </div>
       </main>
