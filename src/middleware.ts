@@ -31,8 +31,7 @@ export const config = {
         // - Static files (*.ico, *.png, *.jpg, etc.)
         // - Public folder files
         "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
-        "/fr/dashboard",
-        "/en/dashboard",
+        
     ],
 };
 

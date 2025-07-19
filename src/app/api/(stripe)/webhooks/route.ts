@@ -1,4 +1,5 @@
 import { stripe } from "@/lib/stripe";
+import Business from "@/models/business";
 import { User } from "@/models/user";
 import Stripe from "stripe";
 
@@ -98,15 +99,20 @@ export async function POST(req: Request){
             });
 
             try {
-                const user = await User.findOne({
+                const business = await Business.findOne({
                     "subscription.customerId": userBusiness
-                }).select("_id id");
-                await User.findByIdAndUpdate(user?._id, {
+                }).select("_id ownerId");
+
+                const businessUpdate = await Business.findByIdAndUpdate(business?._id, {
                     subscription: {
                         customerId: userBusiness,
                         status: session.status,
                         plan: planName,
+                        currentPeriodEnd: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30),
                     },
+                }, { new: true });
+
+                await User.findByIdAndUpdate(businessUpdate?.ownerId, {
                     dashboardAccess: true,
                 });
 

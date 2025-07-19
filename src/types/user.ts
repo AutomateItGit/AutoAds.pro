@@ -8,7 +8,7 @@ export interface IUser extends Document {
     id: string;
     name: string;
     email: string;
-    password: string;
+    password?: string; // Optional for OAuth users
     image?: string;
     createdAt: Date;
     updatedAt: Date;

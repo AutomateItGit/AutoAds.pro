@@ -22,8 +22,16 @@ export const UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: [true, "Password is required"],
+        required: [false, "Password is not required for OAuth users"],
         minlength: [8, "Password must be at least 8 characters long"],
+        validate: {
+            validator: function(password: string) {
+                // If password is provided, it should meet length requirements
+                // OAuth users will have OAUTH_USER_ prefix which satisfies length
+                return !password || password.length >= 8;
+            },
+            message: "Password must be at least 8 characters long when provided"
+        }
     },
     dashboardAccess: {
         type: Boolean,

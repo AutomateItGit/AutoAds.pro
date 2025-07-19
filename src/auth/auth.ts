@@ -5,6 +5,9 @@ import bcrypt from "bcryptjs";
 import connectDB from "@/lib/mongo";
 import { User } from "@/models/user";
 import { Types } from "mongoose";
+import crypto from "crypto";
+import Business from "@/models/business";
+import { stripe } from "@/lib/stripe";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -38,9 +41,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             throw new Error("No User Found");
           }
 
-
           // Check if user has a password (not an OAuth user)
-          if (!user.password) {
+          if (!user.password || user.password.startsWith('OAUTH_USER_')) {
             throw new Error("This account uses Google sign-in. Please use the Google sign-in button.");
           }
 
@@ -70,9 +72,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   
   
   callbacks: {
-    async signIn({ user, profile }) {
-      // Handle Google OAuth users
-      if (profile?.provider === "google") {
+    async signIn({ user, account, profile }) {
+      // Handle Google OAuth users - use account.provider instead of profile.provider
+      if (account?.provider === "google") {
         try {
           await connectDB();
           
@@ -82,14 +84,36 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           });
           
           if (!existingUser) {
+            // Generate an impossible-to-guess password for OAuth users
+            const impossiblePassword = `OAUTH_USER_${crypto.randomBytes(32).toString('hex')}`;
+            
             // Create new user for Google OAuth
-            await User.create({
+            const userData = await User.create({
               _id: new Types.ObjectId(),
               email: user.email?.toLowerCase(),
               name: user.name || profile?.name || 'Google User',
               image: user.image || profile?.picture,
-              password: '', // No password for OAuth users
+              password: impossiblePassword,
             });
+
+            const customerId = await stripe.customers.create({
+              email: userData.email as string,
+              name: userData.name as string,
+          });
+  
+          const business = await Business.create({
+              name: userData.name,
+              ownerId: userData._id,
+              subscription: {
+                  status: "unsubscribed",
+                  customerId: customerId.id,
+                  currentPeriodEnd: new Date(),
+              },
+          });
+  
+          
+          await User.findByIdAndUpdate(userData._id, { businessId:  new Types.ObjectId(business._id.toString()) }, { new: true }).select("-password");
+
           } else {
             // Update existing user's profile picture if it changed
             if (user.image && user.image !== existingUser.image) {
@@ -97,13 +121,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 image: user.image
               });
             }
+            
+            // If this is an existing credentials user trying to sign in with Google,
+            // we need to decide how to handle this. For now, we'll allow it but
+            // you might want to link accounts instead
+            if (existingUser.password && !existingUser.password.startsWith('OAUTH_USER_')) {
+              console.log(`User ${user.email} has both credentials and OAuth access`);
+              // You could update the password to OAuth-only or handle differently
+            }
           }
           
           return true;
-        } catch (error) {
-          console.error('Error handling Google sign in:', error);
-          return false;
-        }
+                  } catch (error) {
+            console.error('Error handling Google sign in:', error);
+            // If there's a duplicate key error (race condition), still allow sign in
+            if (error && typeof error === 'object' && 'code' in error && error.code === 11000) {
+              console.log(`Duplicate user creation attempted for ${user.email}, allowing sign in`);
+              return true;
+            }
+            return false;
+          }
       }
       
       // For credentials provider, let the authorize function handle validation
