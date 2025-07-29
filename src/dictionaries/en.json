@@ -1,76 +1,231 @@
 {
-    "home" : {
-        "hello" : "Hello World"
+  "home": {
+    "hello": "Hello world"
+  },
+  "header": {
+    "banner": {
+      "early": "Early Access - 30% discount on all plans!"
     },
-    "header" : {
-        "banner" : {
-            "early" : "Early Access - Limited Time Offer"
-        },
-        "nav" : {
-            "features" : "Features",
-            "pricing" : "Pricing",
-            "testimonials" : "Testimonials"
-        },
-        "btn" : {
-            "trial" : "Start Free Trial",
-            "login" : "Sign In",
-            "logout" : "Sign Out"
-        }
+    "nav": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "about": "About",
+      "contact": "Contact",
+      "roadmap": "Roadmap",
+      "testimonials": "Testimonials",
+      "faq": "FAQ"
     },
-    "checkout": {
-      "cancel": {
-        "title": "Order Cancellation",
-        "description": "You have cancelled the order",
-        "backToHome": "Back to home page"
-      },
-      "success": {
-        "title": "Payment Successful!",
-        "description": "Thank you for subscribing.",
-        "subscriptionTitle": "Your Subscription",
-        "plan": "Plan:",
-        "status": "Status:",
-        "active": "Active",
-        "startUsing": "Start Using"
-      }
+    "btn": {
+      "login": "Login",
+      "signup": "Sign Up",
+      "trial": "Free Trial",
+      "logout": "Logout"
+    }
+  },
+  "hero": {
+    "title": "No more cost or agency, let automation handle your ads",
+    "subtitle": "Brief • Creation • Management",
+    "description": "Launch Google, Facebook & Instagram ads in just a few clicks. Auto Ads builds, manages, and optimizes your campaigns automatically. No agency, no freelancers, just results on autopilot.",
+    "cta": "Get Started",
+    "demo": "Watch Demo"
+  },
+  "features": {
+    "title": "Features",
+    "subtitle": "Everything you need for optimal online advertising",
+    "oauth": {
+      "title": "Create your campaigns",
+      "desc": "Create your Google, Facebook & Instagram campaigns in just a few clicks"
     },
-    "verification": {
-      "email": {
-        "loading": "Loading...",
-        "verifying": "Verifying your email...",
-        "waitMessage": "Please wait while we verify your email address.",
-        "successTitle": "Email Verified Successfully!",
-        "failedTitle": "Verification Failed",
-        "redirecting": "Redirecting to sign in page in 3 seconds...",
-        "goToSignIn": "Go to Sign In",
-        "resendEmail": "Resend Verification Email",
-        "resending": "Resending...",
-        "enterEmail": "Please enter your email address to resend verification:"
-      }
+    "planning": {
+      "title": "Automate",
+      "desc": "Deploy your campaigns at lower costs"
     },
-      "signin": {
+    "reports": {
+      "title": "Track",
+      "desc": "Track the results of your campaigns in real-time"
+    }
+  },
+  "pricing": {
+    "title": "Simple pricing for your online advertising",
+    "subtitle": "A transparent commission on your advertising campaigns.",
+    "recommended": "Recommended",
+    "perMonth": "commission",
+    "choose": "Choose",
+    "basic": {
+      "title": "Essential",
+      "price": "€5 + 10%",
+      "period": "of budget",
+      "features": [
+        "Auto campaign creation",
+        "Daily email summary",
+        "Tracking dashboard",
+        "Manage up to 2 campaigns",
+        "Email support",
+        "Credit card payment"
+      ]
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "€15 + 10%",
+      "period": "of budget",
+      "features": [
+        "Unlimited campaigns",
+        "Automatic optimization",
+        "Custom alerts",
+        "Advanced reports",
+        "Priority support",
+        "Stripe payment"
+      ]
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "price": "Custom",
+      "features": [
+        "Multi-ad accounts",
+        "Private API",
+        "Advanced analytics",
+        "Custom guidance",
+        "Dedicated onboarding",
+        "Phone & video support"
+      ]
+    }
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "support": "Support",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "contact": "Contact",
+    "copyright": "All rights reserved.",
+    "resources": "Resources",
+    "docs": "Documentation",
+    "blog": "Blog",
+    "legalNotice": "Legal Notice",
+    "features": "Features",
+    "booking": "Ad Brief",
+    "reminders": "Campaign Tracking",
+    "statistics": "Statistics",
+    "about": "About",
+    "pricing": "Pricing",
+    "gdpr": "GDPR",
+    "availability": "Mon-Fri, 9am-6pm"
+  },
+  "language": "Français",
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "All answers to your questions about AutoAds",
+    "q1": "How does the automatic campaign creation system work?",
+    "a1": "AutoAds uses the Meta Ads API to automatically create your campaigns based on your brief (objective, budget, audience). You just fill out a simple form and the campaign is created and funded automatically.",
+    "q2": "Can I control my advertising budget?",
+    "a2": "Yes, you define your budget when creating your campaign. The system automatically alerts you if your performance drops or if the ROI is not optimal.",
+    "q3": "How does performance tracking work?",
+    "a3": "An automated script retrieves your campaign KPIs daily (cost per click, leads, conversions) and sends you a summary email every morning.",
+    "q4": "Do I need to have digital marketing knowledge?",
+    "a4": "No, our system is designed for beginners. It guides you through a simple form and takes care of all the technical aspects of campaign creation and tracking.",
+    "q5": "How does billing work?",
+    "a5": "We charge a fixed fee plus 10% of the spent budget. For example, for €100 of advertising budget, you pay €5 + 10% (€10) or €15 in service fees on top of the advertising budget."
+  },
+  "popup": {
+    "close": "Close",
+    "title": "Launch Your First Campaign",
+    "subtitle": "Enter your email to start creating your automated ad campaign.",
+    "success": "Thank you! You will receive an email with instructions to create your first campaign.",
+    "email": {
+      "label": "Your email address",
+      "placeholder": "name@example.com"
+    },
+    "submitting": "Submitting...",
+    "submit": "Create my first campaign",
+    "disclaimer": "We will never share your email. You can unsubscribe at any time."
+  },
+  "cta": {
+    "title": "Ready to Automate Your Ads?",
+    "subtitle": "Join hundreds of freelancers and small businesses using AutoAds to manage their ad campaigns without marketing expertise.",
+    "button": "Get Started Now"
+  },
+  "testimonials": {
+    "title": "Trusted by Professionals Like You",
+    "subtitle": "Discover why professionals choose AutoAds for their ad campaign management.",
+    "quote1": "Incredible time saver! I can finally manage my Facebook ads without marketing expertise and the results are there.",
+    "name1": "Nora Bensalem",
+    "title1": "Personal Development Coach",
+    "quote2": "Finally, a simple solution for creating effective ads. The daily report allows me to track my results with no effort.",
+    "name2": "Yanis Mansouri",
+    "title2": "Independent Consultant",
+    "quote3": "I was skeptical at first, but AutoAds has truly simplified my marketing strategy. I gain clients without spending hours on Facebook Ads Manager.",
+    "name3": "Claire Dubois",
+    "title3": "Marketing Freelancer",
+    "singleTestimonial": {
+      "quote": "Since using AutoAds, I spend less than 5 minutes a week on campaign management, down from several hours before. My conversion rate has increased by 40% with the same budget!",
+      "name": "Marie Dubois",
+      "title": "Digital Consultant",
+      "imageAlt": "Proof of time saved with AutoAds"
+    }
+  },
+  "video": {
+    "title": "See AutoAds in Action",
+    "subtitle": "See how to create and manage an ad campaign in under 60 seconds."
+  },
+  "checkout": {
+    "cancel": {
+      "title": "Order Cancelled",
+      "description": "You have cancelled the order",
+      "backToHome": "Back to homepage"
+    },
+    "success": {
+      "title": "Payment Successful!",
+      "description": "Thank you for your subscription.",
+      "subscriptionTitle": "Your subscription",
+      "plan": "Plan:",
+      "status": "Status:",
+      "active": "Active",
+      "startUsing": "Start using"
+    }
+  },
+  "verification": {
+    "email": {
+      "loading": "Loading...",
+      "verifying": "Verifying your email...",
+      "waitMessage": "Please wait while we verify your email address.",
+      "successTitle": "Email verified successfully!",
+      "failedTitle": "Verification failed",
+      "redirecting": "Redirecting to sign in page in 3 seconds...",
+      "goToSignIn": "Go to sign in",
+      "resendEmail": "Resend verification email",
+      "resending": "Sending...",
+      "enterEmail": "Please enter your email address to resend verification:"
+    }
+  },
+  "signin": {
     "title": "Sign In Page",
     "subtitle": "Sign in with email",
     "email": "Email",
     "password": "Password",
-    "emailPlaceholder": "françoisJ@mail.com",
+    "emailPlaceholder": "francoisJ@mail.com",
     "passwordPlaceholder": "*********",
-    "forgotPassword": "Forgot your password?",
-    "signInButton": "Sign In"
+    "forgotPassword": "Forgot password?",
+    "signInButton": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUpLink": "Sign up"
   },
   "signup": {
-    "title": "Welcome to AutoPlanner",
-    "subtitle": "Sign up and get rid of no show now !",
+    "title": "Welcome to AutoAds",
+    "subtitle": "Sign up and automate your ad campaigns now!",
     "name": "Name",
     "email": "Email",
     "phoneNumber": "Phone number",
     "password": "Password",
     "namePlaceholder": "François",
-    "emailPlaceholder": "françoisJ@mail.com",
+    "emailPlaceholder": "francoisJ@mail.com",
     "phonePlaceholder": "0123456789",
     "passwordPlaceholder": "*********",
-    "signUpButton": "Sign up ->",
+    "signUpButton": "Sign Up ->",
     "signingUp": "Signing up...",
-    "googleButton": "Google"
+    "googleButton": "Google",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInLink": "Sign in"
   },
   "common": {
     "loading": "Loading...",
@@ -81,6 +236,24 @@
   },
   "signout": {
     "signingOut": "Signing out..."
+  },
+  "dashboard": {
+    "logout": "Logout"
+  },
+  "googleAds": {
+    "connectionTitle": "Google Ads Connection",
+    "connectionDescription": "Connect your Google Ads account to manage your advertising campaigns",
+    "connect": "Connect Google Ads",
+    "connected": "Google Ads account successfully connected",
+    "viewCampaigns": "View Campaigns",
+    "connectDescription": "You will be redirected to Google to authorize access to your account",
+    "errors": {
+      "auth_failed": "Google authentication failed",
+      "no_code": "Authorization code missing",
+      "server_error": "Server error during connection",
+      "connectionCheck": "Unable to verify connection status",
+      "initConnection": "Unable to initialize connection",
+      "unknown": "An unknown error occurred"
+    }
   }
 }
-

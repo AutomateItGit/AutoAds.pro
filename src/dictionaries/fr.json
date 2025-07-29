@@ -1,23 +1,165 @@
 {
-    "home" : {
-        "hello" : "Bonjour le monde"
+  "home": {
+    "hello": "Bonjour le monde"
+  },
+  "header": {
+    "banner": {
+      "early": "AutoInvoice est nouveau, profitez d'un prix avantageux !"
     },
-    "header" : {
-        "banner" : {
-            "early" : "Accès Anticipé - Offre Limitée"
-        },
-        "nav" : {
-            "features" : "Fonctionnalités",
-            "pricing" : "Tarifs",
-            "testimonials" : "Témoignages"
-        },
-        "btn" : {
-            "trial" : "Essai Gratuit",
-            "login" : "Se Connecter",
-            "logout" : "Se Déconnecter"
-        }
+    "nav": {
+      "features": "Produit",
+      "pricing": "Tarifs",
+      "contact": "Contact",
+      "testimonials": "Avis",
+      "faq": "FAQ"
     },
-    "checkout": {
+    "btn": {
+      "login": "Connexion",
+      "signup": "S'inscrire",
+      "trial": "Commencer maintenant",
+      "logout": "Déconnexion"
+    }
+  },
+  "hero": {
+    "title": "Plus de couts supplementaire ou d'agence. De meilleurs resulats en automatisant vos ads",
+    "description": "Lancez des campagnes Google, Facebook & Instagram en quelques clics. Auto Ads crée, gère et optimise vos pubs automatiquement. Plus besoin d'agence ou de freelance vous gardez le contrôle, on s'occupe du reste.",
+    "cta": "Commencer maintenant",
+    "demo": "Voir la démo"
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "subtitle": "Tout ce qu'il vous faut pour gérer efficacement vos publicités en ligne",
+    "oauth": {
+      "title": "Créer vos campagnes",
+      "desc": "Créer vos campagnes Google, Facebook & Instagram en quelques clics"
+    },
+    "planning": {
+      "title": "Automatisez",
+      "desc": "Deployez vos campagnes à moindre frais"
+    },
+    "reports": {
+      "title": "Suivez",
+      "desc": "Suivez les résultats de vos campagnes en temps réel"
+    }
+  },
+  "pricing": {
+    "title": "Tarification simple pour votre publicité en ligne",
+    "subtitle": "Une commission transparente sur vos campagnes publicitaires.",
+    "recommended": "Recommandé",
+    "perMonth": "de commission",
+    "choose": "Choisir",
+    "basic": {
+      "title": "Essential",
+      "price": "5€ + 10%",
+      "period": "du budget",
+      "features": [
+        "Création de campagne auto",
+        "Résumé quotidien par email",
+        "Dashboard de suivi",
+        "Gestion de 2 campagnes max",
+        "Support par email",
+        "Paiement par CB"
+      ]
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "15€ + 10%",
+      "period": "du budget",
+      "features": [
+        "Campagnes illimitées",
+        "Optimisation automatique",
+        "Alertes personnalisées",
+        "Rapports avancés",
+        "Support prioritaire",
+        "Paiement via Stripe"
+      ]
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "price": "Sur devis",
+      "features": [
+        "Multi-comptes publicitaires",
+        "API privée",
+        "Statistiques avancées",
+        "Accompagnement personnalisé",
+        "Onboarding dédié",
+        "Support téléphone & visio"
+      ]
+    }
+  },
+  "footer": {
+    "product": "Produit",
+    "company": "Entreprise",
+    "legal": "Mentions légales",
+    "support": "Support",
+    "terms": "Conditions d'utilisation",
+    "privacy": "Politique de confidentialité",
+    "contact": "Contact",
+    "copyright": "Tous droits réservés.",
+    "resources": "Ressources",
+    "docs": "Documentation",
+    "blog": "Blog",
+    "legalNotice": "Mentions légales",
+    "features": "Fonctionnalités",
+    "booking": "Brief publicitaire",
+    "reminders": "Suivi de campagnes",
+    "statistics": "Statistiques",
+    "about": "À propos",
+    "pricing": "Tarifs",
+    "gdpr": "RGPD",
+    "availability": "Lun-Ven, 9h-18h"
+  },
+  "language": "English",
+  "faq": {
+    "title": "Questions fréquentes",
+    "subtitle": "Toutes les réponses à vos questions sur AutoAds",
+    "q1": "Comment fonctionne le système de création automatique de campagnes ?",
+    "a1": "AutoAds utilise l'API Meta Ads pour créer automatiquement vos campagnes en fonction de votre brief (objectif, budget, audience). Vous n'avez qu'à remplir un formulaire simple et la campagne est créée et financée automatiquement.",
+    "q2": "Est-ce que je peux contrôler mon budget publicitaire ?",
+    "a2": "Oui, vous définissez votre budget lors de la création de votre campagne. Le système vous alerte automatiquement si vos performances chutent ou si le ROI n'est pas optimal.",
+    "q3": "Comment fonctionne le suivi des performances ?",
+    "a3": "Un script automatisé récupère quotidiennement les KPIs de vos campagnes (coût par clic, leads, conversions) et vous envoie un résumé par email chaque matin.",
+    "q4": "Dois-je avoir des connaissances en marketing digital ?",
+    "a4": "Non, notre système est conçu pour les débutants. Il vous guide à travers un formulaire simple et s'occupe de tous les aspects techniques de la création et du suivi de campagne.",
+    "q5": "Comment fonctionne la facturation ?",
+    "a5": "Nous facturons des frais fixes plus 10% du budget dépensé. Par exemple, pour €100 de budget publicitaire, vous payez €5 + 10% (€10) ou €15 en frais de service sur le budget publicitaire."
+  },
+  "popup": {
+    "close": "Fermer",
+    "title": "Lancez votre première campagne",
+    "subtitle": "Saisissez votre email pour commencer à créer votre campagne publicitaire automatisée.",
+    "success": "Merci ! Vous recevrez un email avec les instructions pour créer votre première campagne.",
+    "email": {
+      "label": "Votre adresse email",
+      "placeholder": "nom@exemple.com"
+    },
+    "submitting": "Envoi en cours...",
+    "submit": "Créer ma première campagne",
+    "disclaimer": "Nous ne partagerons jamais votre email. Vous pouvez vous désinscrire à tout moment."
+  },
+  "cta": {
+    "title": "Prêt à automatiser vos publicités ?",
+    "subtitle": "Rejoignez des centaines de freelances et petites entreprises qui utilisent AutoAds pour gérer leurs campagnes publicitaires sans expertise marketing.",
+    "button": "Commencer maintenant"
+  },
+  "testimonials": {
+    "title": "Nos clients témoignent",
+    "subtitle": "Découvrez pourquoi les professionnels choisissent AutoAds pour la gestion de leurs campagnes publicitaires.",
+    "quote1": "Incroyable gain de temps ! Je peux enfin gérer mes publicités Facebook sans expertise marketing et les résultats sont au rendez-vous.",
+    "name1": "Nora Bensalem",
+    "title1": "Coach en développement personnel",
+    "quote2": "Enfin une solution simple pour créer des publicités efficaces. Le rapport quotidien me permet de suivre mes résultats sans effort.",
+    "name2": "Yanis Mansouri",
+    "title2": "Consultant indépendant",
+    "quote3": "J'étais sceptique au début, mais AutoAds a vraiment simplifié ma stratégie marketing. Je gagne des clients sans passer des heures sur Facebook Ads Manager.",
+    "name3": "Claire Dubois",
+    "title3": "Freelance en marketing"
+  },
+  "video": {
+    "title": "Découvrez AutoAds en action",
+    "subtitle": "Voyez comment créer et gérer une campagne publicitaire en moins de 60 secondes."
+  },
+  "checkout": {
     "cancel": {
       "title": "Annulation de la commande",
       "description": "Vous avez annulé la commande",
@@ -55,11 +197,13 @@
     "emailPlaceholder": "françoisJ@mail.com",
     "passwordPlaceholder": "*********",
     "forgotPassword": "Mot de passe oublié ?",
-    "signInButton": "Se Connecter"
+    "signInButton": "Se Connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUpLink": "S'inscrire"
   },
   "signup": {
-    "title": "Bienvenue sur AutoPlanner",
-    "subtitle": "Inscrivez-vous et éliminez les rendez-vous manqués dès maintenant !",
+    "title": "Bienvenue sur AutoAds",
+    "subtitle": "Inscrivez-vous et automatisez vos campagnes publicitaires dès maintenant !",
     "name": "Nom",
     "email": "Email",
     "phoneNumber": "Numéro de téléphone",
@@ -70,7 +214,9 @@
     "passwordPlaceholder": "*********",
     "signUpButton": "S'inscrire ->",
     "signingUp": "Inscription en cours...",
-    "googleButton": "Google"
+    "googleButton": "Google",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signInLink": "Se connecter"
   },
   "common": {
     "loading": "Chargement...",
@@ -81,5 +227,24 @@
   },
   "signout": {
     "signingOut": "Déconnexion en cours..."
+  },
+  "dashboard": {
+    "logout": "Se déconnecter"
+  },
+  "googleAds": {
+    "connectionTitle": "Connexion Google Ads",
+    "connectionDescription": "Connectez votre compte Google Ads pour gérer vos campagnes publicitaires",
+    "connect": "Connecter Google Ads",
+    "connected": "Compte Google Ads connecté avec succès",
+    "viewCampaigns": "Voir les campagnes",
+    "connectDescription": "Vous serez redirigé vers Google pour autoriser l'accès à votre compte",
+    "errors": {
+      "auth_failed": "Échec de l'authentification Google",
+      "no_code": "Code d'autorisation manquant",
+      "server_error": "Erreur serveur lors de la connexion",
+      "connectionCheck": "Impossible de vérifier l'état de la connexion",
+      "initConnection": "Impossible d'initialiser la connexion",
+      "unknown": "Une erreur inconnue est survenue"
+    }
   }
 }

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AuthProvider from '@/components/providers/AuthProvider';
+import AuthProvider from "@/components/providers/AuthProvider";
 import { getDictionary } from "@/lib/dictonnaries";
 import { DictionaryProvider } from "@/components/providers/DictonaryContext";
+import { LanguageProvider } from "@/components/LanguageContext";
+import { NotificationProvider } from "@/components/NotificationSystem";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,21 +29,21 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ lang: "fr" | "en" }>;
 }>) {
-
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
 
   return (
-    <html lang={ (await params).lang}>
+    <html lang={(await params).lang}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-        <DictionaryProvider dictionary={dictionary} locale={lang}>
-          {children}
-        </DictionaryProvider>
+          <DictionaryProvider dictionary={dictionary} locale={lang}>
+            <LanguageProvider>
+              <NotificationProvider>{children}</NotificationProvider>
+            </LanguageProvider>
+          </DictionaryProvider>
         </AuthProvider>
-        
       </body>
     </html>
   );

@@ -16,30 +16,30 @@
   --animate-popup: popup 0.25s ease-in-out;
   --animate-shimmer: shimmer 3s ease-out infinite alternate;
 
-  /* Custom colors from your old config */
-  --color-primary-100: rgb(5 150 105);
-  --color-primary-900: #ecfdf5;
-  --color-primary-9000: rgb(5 150 105);
+  /* Custom colors - Meta Theme (Blue) */
+  --color-primary-100: rgb(24 119 242);
+  --color-primary-900: #eff3ff;
+  --color-primary-9000: rgb(24 119 242);
   --color-bg-classic: white;
-  --color-bg-bouton-classic: rgb(5 150 105);
-  --color-bg-bouton-hover: rgb(4 120 87);
-  --color-bg-bouton-secondary: rgb(209 250 229);
-  --color-bg-bouton-secondary-hover: rgb(167 243 208);
-  --color-border-image: rgb(167 243 208 / 0.5);
+  --color-bg-bouton-classic: rgb(24 119 242);
+  --color-bg-bouton-hover: rgb(22 111 229);
+  --color-bg-bouton-secondary: rgb(219 234 254);
+  --color-bg-bouton-secondary-hover: rgb(191 219 254);
+  --color-border-image: rgb(191 219 254 / 0.5);
   
   /* Text colors */
   --color-texte-header-black: rgb(17 24 39);
   --color-texte-description-black: rgb(75 85 99);
-  --color-texte-header-green: rgb(5 150 105);
-  --color-texte-description-green: rgb(5 150 105);
+  --color-texte-header-green: rgb(24 119 242);
+  --color-texte-description-green: rgb(24 119 242);
   --color-texte-header-mobileBlack: rgb(17 24 39);
   --color-texte-footer: rgb(107 114 128);
   
   /* Background colors */
   --color-bg-buble: rgba(255, 255, 255, 0.9);
-  --color-bg-top-from: rgb(5 150 105);
-  --color-bg-top-to: rgb(16 185 129);
-  --color-bg-automationShowcaseBuble: rgb(167 243 208);
+  --color-bg-top-from: rgb(24 119 242);
+  --color-bg-top-to: rgb(59 130 246);
+  --color-bg-automationShowcaseBuble: rgb(191 219 254);
   --color-bg-videoShowcase: rgb(31 41 55);
   --color-bg-stars: rgb(251 191 36);
 
